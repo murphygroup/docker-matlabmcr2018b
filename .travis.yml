@@ -1,0 +1,17 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+# whitelist
+branches:
+  only:
+    - master
+
+before_install:
+  - docker build -t murphylab/matlab .
+
+script:
+  - docker images
