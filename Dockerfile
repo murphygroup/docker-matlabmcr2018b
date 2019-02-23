@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN add-apt-repository ppa:webupd8team/java && \
     apt-get update && apt-get upgrade -y && \
-    apt-get install -y openjdk-8-jdk
+    apt-get install -y openjdk-8-jdk && \
     apt-get clean 
 ###############################################################################################
 
