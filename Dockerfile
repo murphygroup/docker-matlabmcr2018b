@@ -1,4 +1,4 @@
-FROM ubuntu:latest as intermediate
+FROM ubuntu:16.04 as intermediate
 
 ###############################################################################################
 MAINTAINER Ivan E. Cao-Berg <icaoberg@andrew.cmu.edu>
@@ -18,7 +18,15 @@ RUN apt-get update && apt-get install -y \
     wget \
     tree \
     curl \
-    vim && \
+    vim \
+    sudo \
+    xorg xserver-xorg \
+    software-properties-common \
+    uuid-runtime
+
+RUN add-apt-repository ppa:webupd8team/java && \
+    apt-get update && apt-get upgrade -y && \
+    apt-get install -y openjdk-8-jdk
     apt-get clean 
 ###############################################################################################
 
@@ -36,7 +44,7 @@ RUN mkdir /opt/mc && \
 ###############################################################################################
 
 ###############################################################################################
-FROM ubuntu:latest
+FROM ubuntu:16.04
 COPY --from=intermediate /opt/mcr /opt/mcr
 ###############################################################################################
 
